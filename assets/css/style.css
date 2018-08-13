@@ -1,0 +1,38 @@
+
+body {
+    background-image: url("../images/usamap.jfif");
+}
+.jumbotron {
+    background-color: #021B7A ;
+    padding: 32px;
+}
+.container {
+    text-align: center;
+}
+.display-4 {
+    color: white;
+    font-size: 100px;
+    font-weight: 900; 
+}
+.lead {
+    color: red;
+    font-size: 50px;
+    font-weight: 500;
+    font-family: 'Dancing Script', cursive;
+}
+.card {
+    text-align: left;
+    border-style: solid 2px;
+    border-color: #021B7A
+}
+.card-header {
+    background-color: #D2D3D5;
+}
+.card-img {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+.card-text {
+    font-size: 50px;
+    text-align: center;
+}
