@@ -1,37 +1,47 @@
-// Start of game
-alert("Press Ok key to begin!");
+// let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 // Pick a random word from an array
- let words = ["the alamo", "golden gate bridge", "grand canyon", "hoover dam", "independance hall", "st louis arch", "mount rushmore", "national mall", "pearl harbor", "statue of liberty", "yellowstone"]
 
- let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
- 
- let word = words[Math.floor(Math.random() * words.length)];
+let words = ["the alamo", "golden gate bridge", "grand canyon", "hoover dam", "independance hall", "st louis arch", "mount rushmore", "national mall", "pearl harbor", "statue of liberty", "yellowstone"];
 
+let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-// Set up the answer block
- 
- let answer = [];
- function getReady() {
- for (var i = 0; i < word.length; i++) {
-    answer[i] = "_";
+let answer = [];
+
+let word = "";
+
+function initializeGame(){
+    word = words[Math.floor(Math.random() * words.length)]
+    // remove this word from the words array below
+
+    for (let i = 0; i < word.length; i++) {
+        answer[i] = "_";
+    }
+
+    let wordString = answer.join(" ");    
+    writeWord(wordString);
 }
-let wordString = answer.join(" ");
- document.getElementById(".card-text").innerHTML = wordString;
+// writes a given string to the .card-text element
+// when initialized, just _
+// later, with letters
+function writeWord( strToWrite ){
+    document.querySelector(".card-text").innerHTML = strToWrite;    
 }
+// the initial game initialization, can be called to reset the game
+// with new word
+initializeGame();
 
-//  remainingLetters = word.length;
 
-//  while (remainingLetters > 0) {
-//  return(answer.join(" "));
-
- 
 // Let user make a choice
- document.onkeyup = function(event) {
-    var userGuess = event.key;
-//    var userGuess = String.fromCharCode(KeyboardEvent.keyCode).toUpperCase();
- }
- console.log(userGuess);
+document.onkeyup = function (event) {
+   let userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+   let indexes = [];
+    // loop through "word" and get indexes matching the letter
+    // if( word[i] === userGuess ) indexes.push(i)
+    // loop through index arary and replace the indexes that match with the userGuess
+    // answer[indexes[i]] = userGuess; 
+   console.log(userGuess);
+}
 
 // Display choice user makes, either in puzzle or in letter bank
 // Count down number of guesses
