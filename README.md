@@ -5,7 +5,7 @@ I am currently a student in the UT Austin Coding Bootcamp. We've traversed throu
 
 I choose the theme for my game to be **USA Landmarks**. I hope you enjoy checking it out.
 
-###Here are the requirements of the assignment:
+### Here are the requirements of the assignment:
 
 1. Choose a theme for your game! 
 
