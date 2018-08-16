@@ -1,7 +1,7 @@
 # Word-Guess-Game
 ## Javascript Assignment
 
-I am currently a student in the UT Austin Coding Bootcamp. We've traversed through HTML and CSS and now, our week 4 assignment is to make a simple *Hangman Game* using Javascript.
+I am currently a student in the UT Austin Coding Bootcamp. We've spent 3 weeks traversing HTML and CSS and now our week 4 assignment is to make a simple *Hangman Game* using Javascript.
 
 I choose the theme for my game to be **USA Landmarks**. I hope you enjoy checking it out.
 
@@ -17,9 +17,9 @@ I choose the theme for my game to be **USA Landmarks**. I hope you enjoy checkin
 
      * Wins: (# of times user guessed the word correctly).
 
-     * If the word is `madonna`, display it like this when the game starts: `_ _ _ _ _ _ _`.
+     * If the word is `grand canyon`, display it like this when the game starts: `_ _ _ _ _  _ _ _ _ _ _`.
 
-     * As the user guesses the correct letters, reveal them: `m a d o _  _ a`.
+     * As the user guesses the correct letters, reveal them: `g _ a n _  c a n y _ n`.
 
      * Number of Guesses Remaining: (# of guesses remaining for the user).
 
