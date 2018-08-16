@@ -37,9 +37,18 @@ $(".btn-danger").on("click", function() {
 // Create variable to keep track of letters guessed
 let remainingLetters = word.length;
 
+// Populate score table
+remainingGuesses = 7;
+let lettersGuessedElement = document.querySelector(".letters-guessed")
+function displayLettersGuessed(letter){
+    remainingGuesses--; 
+    lettersGuessedElement.innerHTML = remainingGuesses;
+}
+
 // Let user make a choice
 document.onkeyup = function (event) {
     let userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    
 
 // The game loop
 // while (remainingLetters > 0) {
