@@ -1,12 +1,16 @@
 
 // Create module variables and arrays
-let words = ["the alamo", "golden gate bridge", "grand canyon", "hoover dam", "independance hall", "st louis arch", "mount rushmore", "national mall", "pearl harbor", "statue of liberty", "yellowstone"];
+let words = ["the-alamo", "golden-gate-bridge", "grand-canyon", "hoover-dam", "independance-hall", "st-louis-arch", "mount-rushmore", "national-mall", "pearl-harbor", "statue-of-liberty", "yellowstone"];
 
-let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "-"]
 
 let answerArray = [];
 
 let word = "";
+
+let wins = 0;
+let guesses = 0;
+
 
 // Initialize game function and picks a random word from an array of words
 function initializeGame(){
@@ -34,41 +38,49 @@ $(".btn-danger").on("click", function() {
     initializeGame();
   });
 
-// Create variable to keep track of letters guessed
-let remainingLetters = word.length;
-
-// Populate score table
-remainingGuesses = 7;
-let lettersGuessedElement = document.querySelector(".letters-guessed")
-function displayLettersGuessed(letter){
-    remainingGuesses--; 
-    lettersGuessedElement.innerHTML = remainingGuesses;
-}
-
 // Let user make a choice
-document.onkeyup = function (event) {
-    let userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-    
+// This function is run whenever the user presses a key.
+document.onkeyup = function(event) {
 
+// Determines which key was pressed.
+let userGuess = event.key;
+userGuess = userGuess.toLowerCase();
+// document.onkeyup = function (event) {
+    // let userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    
+console.log(userGuess);
 // The game loop
 // while (remainingLetters > 0) {
-    
-    
-    if (userguess = null){
-        break;
-    } else if (userGuess !== letters){
+     
+    if (letters.includes(userGuess) === false) {
         alert("Please choose a letter!");
     } else {
         for (let j = 0; j < word.length; j++) {
         if (word[j] === userGuess){
             answerArray[j] = userGuess;
-            remainingLetters--;
+            let wordString = answerArray.join(" ");    
+            writeWord(wordString);
+            remainingGuesses--;
             }
         }
     }
 }
+// To keep score
 
+// Create variable to keep track of letters guessed
+let remainingGuesses = word.length + 4;
+document.querySelector(".guesses").innerHTML = ("Remaining guesses: " + remainingGuesses);
 
+// make two functions win and loss
+// each will increment and reinitialize the game
+
+// Populate score table
+
+let lettersGuessedElement = document.querySelector(".letters-guessed")
+function displayLettersGuessed(letter){
+    remainingGuesses--; 
+    lettersGuessedElement.innerHTML = remainingGuesses;
+}
 
 
 // Let user make a choice
