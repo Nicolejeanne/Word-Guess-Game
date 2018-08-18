@@ -65,18 +65,26 @@ userGuess = userGuess.toLowerCase();
     }
 }
 // To keep score
-// This was supposed to add to the wins tally. It doesn't work. If I changed the === to a >= it shows one but never changes.
-if (answerArray === word.length) {
-    wins++;
-    document.querySelector(".wins").innerHTML = ("Wins: " + wins);
-}
+
 // This sets the initial number of remaining guesses for each word.
 remainingGuesses = word.length + 4;
 document.querySelector(".guesses").innerHTML = ("Remaining guesses: " + remainingGuesses);
 
 
-// Still need a function for winning/losing the game, increments and reinitialize the game
+// function for winning the game, increments and reinitialize the game.This was supposed to add to the wins tally. It doesn't work. I changed the === to a >= but win tally never changes.
+function winGame(){ 
+if (answerArray === word.length) {
+    wins++;
+    document.querySelector(".wins").innerHTML = ("Wins: " + wins);
+    initializeGame();
+    }
+}
 
+// function for losing the game, increments and reinitialize the game. This also doesn't work.
+function loseGame(){
+if (remainingGuesses === 0 && answerArray !== word.length){
+    initializeGame();
+    }
+}
 
-// function for losing the game, increments and reinitialize the game
 
