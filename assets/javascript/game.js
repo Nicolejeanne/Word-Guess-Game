@@ -10,18 +10,18 @@ let word = "";
 
 let wins = 0;
 let guesses = 0;
+let remainingGuesses = 0;
 
 
 // Initialize game function and picks a random word from an array of words
 function initializeGame(){
     word = words[Math.floor(Math.random() * words.length)]
 
-    // remove this word from the words array below
 // Create array of blank underscores that equal the number of letters in each randomly chosen word
     for (let i = 0; i < word.length; i++) {
         answerArray[i] = "_";
     }
-
+ 
 // Join array of blank spaces together as string with spaces
     let wordString = answerArray.join(" ");    
     writeWord(wordString);
@@ -31,7 +31,7 @@ function writeWord( strToWrite ){
     document.querySelector(".card-text").innerHTML = strToWrite;    
 }
 
-// the initial game initialization, can be called to reset the game with new word
+// Calling the game initialization, can be called to reset the game with new word
 initializeGame();
 // Hit reset button to choose another word
 $(".btn-danger").on("click", function() {
@@ -45,15 +45,14 @@ document.onkeyup = function(event) {
 // Determines which key was pressed.
 let userGuess = event.key;
 userGuess = userGuess.toLowerCase();
-// document.onkeyup = function (event) {
-    // let userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-    
-console.log(userGuess);
+
 // The game loop
-// while (remainingLetters > 0) {
-     
     if (letters.includes(userGuess) === false) {
-        alert("Please choose a letter!");
+        alert("Please choose a letter!");  
+        // I thought this next else statement would add letters to the letters guessed box. It does but then letters no longer show up in the actual puzzle. Also, no matter where I put the remainingGuesses--, the remaining guesses never count down.
+            // } else if (answerArray.includes(userGuess) === false) {
+            // remainingGuesses--;
+            // document.querySelector(".letters-guessed").innerHTML = ("Letters guessed: " + userGuess);
     } else {
         for (let j = 0; j < word.length; j++) {
         if (word[j] === userGuess){
@@ -66,51 +65,18 @@ console.log(userGuess);
     }
 }
 // To keep score
-
-// Create variable to keep track of letters guessed
-let remainingGuesses = word.length + 4;
+// This was supposed to add to the wins tally. It doesn't work. If I changed the === to a >= it shows one but never changes.
+if (answerArray === word.length) {
+    wins++;
+    document.querySelector(".wins").innerHTML = ("Wins: " + wins);
+}
+// This sets the initial number of remaining guesses for each word.
+remainingGuesses = word.length + 4;
 document.querySelector(".guesses").innerHTML = ("Remaining guesses: " + remainingGuesses);
 
-// make two functions win and loss
-// each will increment and reinitialize the game
 
-// Populate score table
-
-let lettersGuessedElement = document.querySelector(".letters-guessed")
-function displayLettersGuessed(letter){
-    remainingGuesses--; 
-    lettersGuessedElement.innerHTML = remainingGuesses;
-}
+// Still need a function for winning/losing the game, increments and reinitialize the game
 
 
-// Let user make a choice
-// document.onkeyup = function (event) {
-//    let userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-//    let indexes = [];
+// function for losing the game, increments and reinitialize the game
 
-
-//    words.indexOf[i];
-//    while(i>0)
-    // loop through "word" and get indexes matching the letter
-    // if( word[i] === userGuess ) indexes.push(i)
-    
-    // loop through index arary and replace the indexes that match with the userGuess
-    // answer[indexes[i]] = userGuess; 
-//    console.log(userGuess);
-
-
-// Display choice user makes, either in puzzle or in letter bank
-// Count down number of guesses
-// Show a win if user guesses the puzzle
-// Display puzzle solution if player wins
-// Display puzzle solution photo when player wins
-// reset to new puzzle upon key hit after winning or losing
-
-
-// <!-- catches
-// if (userGuess === "a letter") {
-    // alert("chosen correctly!");
-//  }
-//  else {
-    //  alert("Please choose a letter");
-//  }
